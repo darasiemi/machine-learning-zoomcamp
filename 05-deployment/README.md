@@ -42,11 +42,13 @@ curl -X 'POST' 'http://localhost:9696/predict' \
 }'
 ```
 
+
+## Environment management
 To install uv
 ```bash
 pip install uv
 ```
-### Environment management
+
 To initialize uv
 ```bash
 uv init
@@ -79,12 +81,63 @@ When you get a fresh copy of a project that already uses uv, you can install all
 uv sync
 ```
 
-### Docker
-
+## Docker
+To build image
 ```bash
 docker build -t predict-churn .
 ```
-
+To run docker container
 ```bash
 docker run -it --rm -p 9696:9696 predict-churn
 ```
+
+To test the endpoint
+```bash
+uv run python test.py 
+```
+## Model Deployment
+
+### Architecture Overview
+- The churn prediction service is packaged into a Docker container.
+- This container is deployed to AWS Elastic Beanstalk.
+- A marketing service sends requests to the Elastic Beanstalk environment.
+- Elastic Beanstalk forwards these requests to the Docker container.
+- The container processes the request and sends the response back to Elastic Beanstalk.
+- Elastic Beanstalk relays the response to the requesting service.
+
+### Scalability with Elastic Beanstalk (EB)
+Elastic Beanstalk automatically scales the application based on traffic. If the churn prediction service receives a high volume of requests, EB automatically adds more instances of the service to handle the load without interruption (horizontal scaling). Similarly, when traffic decreases, EB scales down the number of instances to optimize resource utilization.
+
+Install AWS EB CLI
+```bash
+ uv add --dev awsebcli
+```
+
+Initialize the EB environment:
+
+```bash
+uv run eb init -p docker -r eu-north-1 churn-serving
+```
+This command configures the EB environment with the following parameters:
+
+- -p docker: Specifies the platform as Docker.
+- -r eu-north-1: Sets the region to eu-north-1. You can choose a different region based on your account information.
+- churn-serving: Defines the name of the environment.
+
+
+To show the platform, run
+```bash
+uv run eb platform show
+```
+
+To create EB environment and deploy model
+```bash
+uv run eb create churn-serving-env
+```
+You will have to provide permissions
+
+To terminate
+```bash
+uv run eb terminate churn-serving-env
+```
+
