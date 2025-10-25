@@ -12,4 +12,5 @@
 05-deployment/.elasticbeanstalk/*
 !05-deployment/.elasticbeanstalk/*.cfg.yml
 !05-deployment/.elasticbeanstalk/*.global.yml
+05-deployment-homework/pipeline_v1.bin
 
