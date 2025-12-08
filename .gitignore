@@ -14,4 +14,6 @@
 !05-deployment/.elasticbeanstalk/*.global.yml
 05-deployment-homework/pipeline_v1.bin
 06-trees/CreditScoring.csv
+09-serverless/keras/models/clothing-model-new.onnx
+09-serverless/sklearn/model.bin
 
