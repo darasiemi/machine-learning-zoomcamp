@@ -16,4 +16,5 @@
 06-trees/CreditScoring.csv
 09-serverless/keras/models/clothing-model-new.onnx
 09-serverless/sklearn/model.bin
-
+09-serverless/homework/hair_classifier_v1.onnx.data
+09-serverless/homework/hair_classifier_v1.onnx
