@@ -9,12 +9,16 @@
 04-evaluation/course_lead_scoring*
 05-deployment/model.bin
 05-deployment/.ipynb_checkpoints
+05-deployment/__pycache__
 05-deployment/.elasticbeanstalk/*
+05-deployment-homework/__pycache__
 !05-deployment/.elasticbeanstalk/*.cfg.yml
 !05-deployment/.elasticbeanstalk/*.global.yml
 05-deployment-homework/pipeline_v1.bin
 06-trees/CreditScoring.csv
+06-trees/.ipynb_checkpoints
 09-serverless/keras/models/clothing-model-new.onnx
 09-serverless/sklearn/model.bin
 09-serverless/homework/hair_classifier_v1.onnx.data
 09-serverless/homework/hair_classifier_v1.onnx
+10-kubernetes/clothing-model.onnx
